@@ -1,0 +1,7 @@
+Archive cleanup verified.
+
+Suggested reference: backup
+
+Current archive contains only public records.
+
+Do not rely on filenames alone.
