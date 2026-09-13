@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>University Digital Archive</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="toast" class="toast"></div>
+    <header>
+      <button id="menu" class="mobile">☰</button>
+      <div class="brand">
+        <b>UA</b>
+        <div>
+          <strong>UNIVERSITY DIGITAL ARCHIVE</strong
+          ><small>RECORD MANAGEMENT SYSTEM</small>
+        </div>
+      </div>
+      <div class="online">● SYSTEM ONLINE</div>
+    </header>
+    <div class="layout">
+      <aside id="side">
+        <p class="label">NAVIGATION</p>
+        <button class="nav active" data-page="dashboard">⌂ Dashboard</button
+        ><button class="nav" data-page="records">▤ Public Records</button
+        ><button class="nav" data-page="archive">◈ Archive Index</button
+        ><button class="nav" data-page="activity">◷ Activity Log</button
+        ><button class="nav" data-page="system">⚙ System Status</button>
+        <div class="secure">
+          ● <b>Archive Secure</b><small>Integrity check passed</small>
+        </div>
+      </aside>
+      <main>
+        <section id="dashboard" class="page active">
+          <div class="hero">
+            <div>
+              <small>ARCHIVE CONTROL CENTER / HOME</small>
+              <h1>Welcome to the<br /><em>Digital Archive.</em></h1>
+              <p>
+                Access verified public records, inspect archive status, and
+                navigate historical university material.
+              </p>
+            </div>
+            <div class="orb"><i></i><b>UA</b></div>
+          </div>
+          <div class="stats">
+            <article>
+              <span>Total Records</span><b>24</b
+              ><small>indexed documents</small>
+            </article>
+            <article>
+              <span>Verified</span><b>21</b><small>integrity confirmed</small>
+            </article>
+            <article>
+              <span>Archived</span><b>03</b><small>legacy collections</small>
+            </article>
+            <article>
+              <span>System</span><b class="green">OK</b
+              ><small>all services operational</small>
+            </article>
+          </div>
+          <div class="cols">
+            <div class="panel">
+              <div class="head">
+                <div>
+                  <small>PUBLIC INDEX</small>
+                  <h2>Recent Records</h2>
+                </div>
+                <button class="link" data-goto="records">View all →</button>
+              </div>
+              <div id="recent"></div>
+            </div>
+            <div class="panel">
+              <div class="head">
+                <div>
+                  <small>ARCHIVE SEARCH</small>
+                  <h2>Find a record</h2>
+                </div>
+              </div>
+              <div class="search">
+                <span>⌕</span
+                ><input
+                  id="search"
+                  placeholder="Search title, category, ID..."
+                  autocomplete="off"
+                /><kbd>/</kbd>
+              </div>
+              <div id="results" class="results">
+                Start typing to search the public index.
+              </div>
+              <div class="chips">
+                <button data-q="general"># general</button
+                ><button data-q="verified"># verified</button
+                ><button data-q="archive"># archive</button>
+              </div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="head">
+              <div>
+                <small>LIVE FEED</small>
+                <h2>System Activity</h2>
+              </div>
+              <span class="live">LIVE</span>
+            </div>
+            <div id="feed"></div>
+          </div>
+        </section>
+        <section id="records" class="page">
+          <div class="title">
+            <div>
+              <small>PUBLIC COLLECTION</small>
+              <h1>Public Records</h1>
+              <p>Verified records available for archival reference.</p>
+            </div>
+          </div>
+          <div class="toolbar">
+            <div class="search wide">
+              <span>⌕</span
+              ><input id="filter" placeholder="Filter records..." />
+            </div>
+            <select id="category">
+              <option value="all">All categories</option>
+              <option>General Records</option>
+              <option>Research</option>
+              <option>Administrative</option>
+            </select>
+          </div>
+          <div id="grid" class="recordgrid"></div>
+        </section>
+        <section id="archive" class="page">
+          <div class="title">
+            <div>
+              <small>LEGACY STORAGE</small>
+              <h1>Archive Index</h1>
+              <p>Collections retained for historical reference.</p>
+            </div>
+          </div>
+          <div class="panel tree">
+            <div>▾ <b>UNIVERSITY ARCHIVE</b><span>ROOT</span></div>
+            <div>▾ records/ <span>PUBLIC</span></div>
+            <div class="child" data-open="01">
+              ▤ 01.txt <span>VERIFIED</span>
+            </div>
+            <div>▸ backup/ <span>LEGACY</span></div>
+            <div class="child muted">
+              ▤ archived markers <span>REVIEWED</span>
+            </div>
+            <div>▸ archive/ <span>HISTORICAL</span></div>
+            <p>
+              Some historical material may no longer appear in the current
+              public tree.
+            </p>
+          </div>
+          <div class="cards">
+            <div class="info">
+              <b>⌘</b>
+              <h3>Repository Integrity</h3>
+              <p>
+                Current archive index is synchronized with the public record
+                set.
+              </p>
+              <strong>VERIFIED</strong>
+            </div>
+            <div class="info">
+              <b>◌</b>
+              <h3>Legacy Collections</h3>
+              <p>
+                Older material is retained separately from active public
+                records.
+              </p>
+              <strong>3 COLLECTIONS</strong>
+            </div>
+          </div>
+        </section>
+        <section id="activity" class="page">
+          <div class="title">
+            <div>
+              <small>AUDIT TRAIL</small>
+              <h1>Activity Log</h1>
+              <p>Recent archive service events.</p>
+            </div>
+            <button id="clear" class="outline">Clear local view</button>
+          </div>
+          <div id="logs" class="panel"></div>
+        </section>
+        <section id="system" class="page">
+          <div class="title">
+            <div>
+              <small>INFRASTRUCTURE</small>
+              <h1>System Status</h1>
+              <p>Current status of archive services.</p>
+            </div>
+          </div>
+          <div class="services">
+            <div>
+              DB
+              <section>
+                <b>Archive Database</b><small>Primary record index</small>
+              </section>
+              <strong>Operational</strong>
+            </div>
+            <div>
+              FS
+              <section>
+                <b>File Service</b><small>Public document storage</small>
+              </section>
+              <strong>Operational</strong>
+            </div>
+            <div>
+              GI
+              <section>
+                <b>Integrity Monitor</b
+                ><small>Record verification service</small>
+              </section>
+              <strong>Operational</strong>
+            </div>
+            <div>
+              AU
+              <section>
+                <b>Audit Service</b><small>Archive event tracking</small>
+              </section>
+              <strong>Operational</strong>
+            </div>
+          </div>
+          <div class="panel diag">
+            <div class="head">
+              <div>
+                <small>DIAGNOSTICS</small>
+                <h2>Run system check</h2>
+              </div>
+              <button id="check" class="primary">Run check</button>
+            </div>
+            <pre id="terminal">
+Ready. Click “Run check” to start diagnostics.</pre
+            >
+          </div>
+        </section>
+      </main>
+    </div>
+    <footer>
+      UNIVERSITY DIGITAL ARCHIVE • PUBLIC REFERENCE NODE •
+      <span id="clock"></span>
+    </footer>
+    <div id="modal" class="modalbg">
+      <div class="modal">
+        <button id="close">×</button><small>ARCHIVE DOCUMENT VIEWER</small>
+        <div id="doc"></div>
+      </div>
+    </div>
+       <!-- archive-source: github -->
+     <!-- repository: silent-archive -->
+    <script src="app.js"></script>
+  </body>
+</html>
